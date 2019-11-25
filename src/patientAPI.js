@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from 'bootstrap/dist/css/bootstrap.min.css';
+import { Card } from 'react-bootstrap';
+
+
 
 function App1(){
     const [data, setData] = useState({ Items: [] });
@@ -17,21 +19,24 @@ function App1(){
         fetchData();
     }, []);
 
-    return (
+    return (    
         <ul>
             {console.log(JSON.stringify(data.Items))}
             {data.Items.map(Items => (
-                <li key={Items.patientid}>
-                <div><h2>Patient: {Items.name}</h2>
-                    <p>Age: {Items.age}</p>
-                    <p>Heart Rate: {Items.heartRate}</p>
-                </div>
-                </li>
-                ))}
-        </ul>
-
-
-
+                
+            <li key={Items.patientid}>
+            <Card>
+                <Card.Title>
+                Patient: {Items.name}
+                </Card.Title>
+            <Card.Body>
+            <p>Age: {Items.age}</p>
+            <p>Heart Rate: {Items.heartRate}</p>
+            </Card.Body>
+            </Card>
+            </li>
+            ))}
+        </ul>  
     );
 }
 
